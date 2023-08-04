@@ -1,9 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './AppTodoList/AppTodoList.jsx'
+import AppTodoList from './AppTodoList/AppTodoList.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    <AppTodoList />
   </React.StrictMode>,
 )

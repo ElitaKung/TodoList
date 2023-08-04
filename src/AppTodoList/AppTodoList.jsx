@@ -1,6 +1,8 @@
+import './AppTodoList.css'
+
 const AppTodoList = () => {
   return (
-    <div>AppTodoList</div>
+    <div className="container">AppTodoList</div>
   )
 }
 
