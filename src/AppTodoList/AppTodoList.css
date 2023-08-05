@@ -1,5 +1,104 @@
 
 .container {
     margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
     text-align: center;
+    width: 50%;
+    min-width: 500px;
 }
+
+.title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 60px;
+    color: #F0F4EF;
+}
+
+.user-input {
+    display: flex;
+    margin: 40px;
+    
+}
+    .user-input-text {
+        border: 0;
+        outline: none;
+        border-radius: 5px;
+        background: #F0F4EF;
+        margin-right: 10px;
+        padding-left: 20px;
+        height: 40px;
+        width: 400px;
+        font-family:'Dancing Script', cursive;
+        font-size: 20px;
+        color: grey;
+        box-shadow: 0px 1px 5px #999;
+    }
+    .user-input-btn {
+        border:0px;
+        outline: none;
+        border-radius: 5px;
+        background: #344966;
+        width: 70px;
+        color: #CCCCCC;
+        box-shadow: 0px 1px 5px #999;
+        font-size: 15px;
+        font-family:'Times New Roman', Times, serif;
+    }
+
+
+
+.card {
+    width: 480px;
+    height: 40px;
+    background: #FFF8D6;
+    font-family: 'Dancing Script', cursive;
+    font-size: 24px;
+    display: flex;
+    margin-top: 10px; 
+} 
+    .icons {
+        display: flex;
+    }
+    .edit {
+        outline: none;
+        border: 5px;
+        width: 40px;
+        height: 40px;
+        background: whitesmoke;
+    }
+
+    .delete {
+        outline: none;
+        border: 5px;
+        width: 40px;
+        height: 40px;
+        background: whitesmoke;
+    }
+
+.done {
+    font-family:'Dancing Script', cursive;
+    font-size: 22pt;
+    color: #F0F4EF;
+    text-align: left;
+    margin: 40px;
+}
+
+.done-list {
+    width: 480px;
+    height: 40px;
+    background: #FFF8D6;
+    font-family: 'Dancing Script', cursive;
+    font-size: 24px;
+    line-height: 1.1;
+    text-align: left;
+    display: flex;
+    grid-template-columns: 1em auto;
+    gap: 0.5em;
+    padding: 8px 0px 0px 0px;
+}
+
+
+
+
+
+
