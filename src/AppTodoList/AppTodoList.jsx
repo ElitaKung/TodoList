@@ -10,6 +10,7 @@ const AppTodoList = () => {
   const [todoList, setTodoList] = useState([]);
 
   const handleSubmit = (e) => {
+    if (input.length < 3) return
     e.preventDefault();
     addTask(input);
     setInput('');
@@ -50,7 +51,7 @@ const AppTodoList = () => {
           value={input}
           onInput={(e) => setInput(e.target.value)}
           placeholder='What do you want to do ?'
-          autoFocus
+          autoFocus={true}
           >
         </input>
         <button onClick={handleSubmit} className='user-input-btn'>ADD</button>
