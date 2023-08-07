@@ -17,6 +17,7 @@
 .user-input {
     display: flex;
     margin: 40px;
+    justify-content: center;
     
 }
     .user-input-text {
@@ -45,57 +46,13 @@
         font-family:'Times New Roman', Times, serif;
     }
 
-
-
-.card {
-    width: 480px;
-    height: 40px;
-    background: #FFF8D6;
-    font-family: 'Dancing Script', cursive;
-    font-size: 24px;
-    display: flex;
-    margin-top: 10px; 
-} 
-    .icons {
-        display: flex;
-    }
-    .edit {
-        outline: none;
-        border: 5px;
-        width: 40px;
-        height: 40px;
-        background: whitesmoke;
-    }
-
-    .delete {
-        outline: none;
-        border: 5px;
-        width: 40px;
-        height: 40px;
-        background: whitesmoke;
-    }
-
-.done {
-    font-family:'Dancing Script', cursive;
-    font-size: 22pt;
-    color: #F0F4EF;
-    text-align: left;
-    margin: 40px;
+.notask {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 15px;
+    color: #344966;
 }
 
-.done-list {
-    width: 480px;
-    height: 40px;
-    background: #FFF8D6;
-    font-family: 'Dancing Script', cursive;
-    font-size: 24px;
-    line-height: 1.1;
-    text-align: left;
-    display: flex;
-    grid-template-columns: 1em auto;
-    gap: 0.5em;
-    padding: 8px 0px 0px 0px;
-}
+
 
 
 

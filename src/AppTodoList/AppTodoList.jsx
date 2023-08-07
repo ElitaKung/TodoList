@@ -11,9 +11,14 @@ const AppTodoList = () => {
       id: 0,
       task: "test",
       completed: false
+    },
+    {
+      id: 1,
+      task: "test II",
+      completed: true
     }
   ]);
-
+  console.log(todoList);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -27,11 +32,25 @@ const AppTodoList = () => {
     setTodoList(newTodoList);
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = (idTaskClicked) => {
     const todoListCopy = [...todoList];
-    const newTodoList = todoListCopy.filter(todo => todo.id != id)
-    setTodoList(newTodoList)
-  }
+    const newTodoList = todoListCopy.filter(todo => todo.id != idTaskClicked);
+    setTodoList(newTodoList);
+  };
+
+  const handleCheck = (idTaskClicked) => {
+    const todoListCopy = [...todoList];
+    todoListCopy.map(todo => {
+      if (todo.id === idTaskClicked) {
+        todo.completed = !todo.completed;
+      }
+    });
+  };
+
+
+
+
+
 
   return (
     <div className='container'>
@@ -45,19 +64,18 @@ const AppTodoList = () => {
         </input>
         <button onClick={handleSubmit} className='user-input-btn'>ADD</button>
       </div>
-      {todoList.map((todo, index) => {
-        return (
-          <Card 
-            key={index} 
-            userInput={todo.task} 
-            completed={todo.completed} 
-            handleDeleteTask={() => handleDelete(todo.id)}
-          />
-        );
-      })}
-
-      <div className='done'>Done ! --------------------</div>
-
+      {
+        todoList.length != 0 ? todoList.map((todo, index) => {
+          return (
+            <Card
+              key={index}
+              userInput={todo?.task}
+              handleDeleteTask={() => handleDelete(todo?.id)}
+              handleCheckTask={() => handleCheck(todo?.id)} 
+            />
+          );
+        }) : <div className="notask"> - no tasks - </div>
+      }
     </div>
   );
 };
