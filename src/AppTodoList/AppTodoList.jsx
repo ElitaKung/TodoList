@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import './AppTodoList.css';
 import Card from "./Components/Card";
 // import data from "./Components/data.json"
 
 const AppTodoList = () => {
 
+  const [count, setCount] = useState(0);
   const [input, setInput] = useState("");
   const [todoList, setTodoList] = useState([
     {
@@ -45,12 +46,10 @@ const AppTodoList = () => {
         todo.completed = !todo.completed;
       }
     });
+    setCount(count + 1)
   };
 
-
-
-
-
+  useEffect(() => {}, [count]);
 
   return (
     <div className='container'>
@@ -65,13 +64,31 @@ const AppTodoList = () => {
         <button onClick={handleSubmit} className='user-input-btn'>ADD</button>
       </div>
       {
-        todoList.length != 0 ? todoList.map((todo, index) => {
+        todoList.length != 0 ? todoList.filter(todo => !todo.completed).map((todo, index) => {
           return (
             <Card
               key={index}
               userInput={todo?.task}
               handleDeleteTask={() => handleDelete(todo?.id)}
-              handleCheckTask={() => handleCheck(todo?.id)} 
+              handleCheckTask={() => handleCheck(todo?.id)}
+              isCompleted={todo?.completed}
+            />
+          );
+        }) : <div className="notask"> - no tasks - </div>
+      }
+
+      <div>Done</div>
+
+
+      {
+        todoList.length != 0 ? todoList.filter(todo => todo.completed).map((todo, index) => {
+          return (
+            <Card
+              key={index}
+              userInput={todo?.task}
+              handleDeleteTask={() => handleDelete(todo?.id)}
+              handleCheckTask={() => handleCheck(todo?.id)}
+              isCompleted={todo?.completed}
             />
           );
         }) : <div className="notask"> - no tasks - </div>

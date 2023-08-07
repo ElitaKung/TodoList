@@ -12,9 +12,7 @@
         width: 480px;
         height: 40px;
         background: #FFF8D6;
-        font-family: 'Dancing Script', cursive;
         margin-top: 10px; 
-        font-size: 16pt;
     }
 
     .card-checkbox {
@@ -35,6 +33,17 @@
         outline: none;
         border: 5px;
 
+    }
+
+    .normal-font {
+        font-family: 'Dancing Script', cursive;
+        font-size: 16pt;
+    }
+
+    .crossed-font {
+        font-family: 'Dancing Script', cursive;
+        font-size: 16pt;
+        text-decoration: line-through;
     }
 
 
