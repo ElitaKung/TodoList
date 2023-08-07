@@ -47,13 +47,33 @@
     }
 
 .notask {
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 15px;
-    color: #344966;
+    font-family: 'Dancing Script', cursive;
+    font-size: 24px;
+    color: grey;
 }
 
 
+.done {
+    display: flex;
+    margin: 40px;
+    
+}
 
+    .done-text {
+        font-family: 'Dancing Script', cursive;
+        font-size: 24pt;
+        color: #F0F4EF;
+        padding-left: 65px;
+        }
+
+    .done-line {
+        width: 420px;
+        height: 0;
+        border: 1px solid #F0F4EF;
+        margin: 20px;
+
+        
+    }
 
 
 

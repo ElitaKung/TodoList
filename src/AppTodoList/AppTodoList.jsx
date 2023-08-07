@@ -7,25 +7,15 @@ const AppTodoList = () => {
 
   const [count, setCount] = useState(0);
   const [input, setInput] = useState("");
-  const [todoList, setTodoList] = useState([
-    {
-      id: 0,
-      task: "test",
-      completed: false
-    },
-    {
-      id: 1,
-      task: "test II",
-      completed: true
-    }
-  ]);
-  console.log(todoList);
+  const [todoList, setTodoList] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     addTask(input);
     setInput('');
   };
+
+ 
 
   const addTask = (userInput) => {
     const todoListCopy = [...todoList];
@@ -59,12 +49,14 @@ const AppTodoList = () => {
           className='user-input-text'
           value={input}
           onInput={(e) => setInput(e.target.value)}
-          placeholder='What do you want to do ?'>
+          placeholder='What do you want to do ?'
+          autoFocus
+          >
         </input>
         <button onClick={handleSubmit} className='user-input-btn'>ADD</button>
       </div>
       {
-        todoList.length != 0 ? todoList.filter(todo => !todo.completed).map((todo, index) => {
+        todoList && todoList.length != 0 ? todoList.filter(todo => !todo.completed).map((todo, index) => {
           return (
             <Card
               key={index}
@@ -74,14 +66,20 @@ const AppTodoList = () => {
               isCompleted={todo?.completed}
             />
           );
-        }) : <div className="notask"> - no tasks - </div>
+        }) : <div className="notask"> - No Tasks - </div>
       }
 
-      <div>Done</div>
+      {
+        (todoList && todoList.length != 0) &&
+          <div className="done">
+            <div className="done-text">Done</div>
+            <div className="done-line"></div>
+          </div>
+      }
 
 
       {
-        todoList.length != 0 ? todoList.filter(todo => todo.completed).map((todo, index) => {
+        todoList && todoList.filter(todo => todo.completed).map((todo, index) => {
           return (
             <Card
               key={index}
@@ -91,7 +89,7 @@ const AppTodoList = () => {
               isCompleted={todo?.completed}
             />
           );
-        }) : <div className="notask"> - no tasks - </div>
+        })
       }
     </div>
   );
