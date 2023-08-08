@@ -14,7 +14,14 @@ const AppTodoList = () => {
     addTask(input);
     setInput('');
   };
-
+  
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      addTask(input);
+      setInput('');
+    }
+  };
+  
   const addTask = (userInput) => {
     const todoListCopy = [...todoList];
     const newTodoList = [...todoListCopy, { id: todoList.length + 1, task: userInput, isCompleted: false }];
@@ -40,6 +47,7 @@ const AppTodoList = () => {
   
   useEffect(() => { }, [count]);
 
+
   return (
     <div className='container'>
       <div className="title">Todo List</div>
@@ -49,6 +57,7 @@ const AppTodoList = () => {
           value={input}
           onInput={(e) => setInput(e.target.value)}
           placeholder='What do you want to do ?'
+          onKeyDown={handleKeyDown}
           autoFocus={true}
         >
         </input>
