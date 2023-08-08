@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import './AppTodoList.css';
 import Card from "./Components/Card";
-// import data from "./Components/data.json"
 
 const AppTodoList = () => {
 
@@ -10,17 +9,15 @@ const AppTodoList = () => {
   const [todoList, setTodoList] = useState([]);
 
   const handleSubmit = (e) => {
-    if (input.length < 3) return
+    if (input.length < 1) return;
     e.preventDefault();
     addTask(input);
     setInput('');
   };
 
- 
-
   const addTask = (userInput) => {
     const todoListCopy = [...todoList];
-    const newTodoList = [...todoListCopy, { id: todoList.length + 1, task: userInput, completed: false }];
+    const newTodoList = [...todoListCopy, { id: todoList.length + 1, task: userInput, isCompleted: false }];
     setTodoList(newTodoList);
   };
 
@@ -30,17 +27,18 @@ const AppTodoList = () => {
     setTodoList(newTodoList);
   };
 
-  const handleCheck = (idTaskClicked) => {
-    const todoListCopy = [...todoList];
-    todoListCopy.map(todo => {
-      if (todo.id === idTaskClicked) {
-        todo.completed = !todo.completed;
+  
+  const handleCheck = (id) => {
+    todoList.map(todo => {
+      if (todo.id === id) {
+        todo.isCompleted = !todo.isCompleted;
       }
     });
-    setCount(count + 1)
+    setCount(count + 1);
+    console.log(todoList);
   };
-
-  useEffect(() => {}, [count]);
+  
+  useEffect(() => { }, [count]);
 
   return (
     <div className='container'>
@@ -52,19 +50,19 @@ const AppTodoList = () => {
           onInput={(e) => setInput(e.target.value)}
           placeholder='What do you want to do ?'
           autoFocus={true}
-          >
+        >
         </input>
         <button onClick={handleSubmit} className='user-input-btn'>ADD</button>
       </div>
       {
-        todoList && todoList.length != 0 ? todoList.filter(todo => !todo.completed).map((todo, index) => {
+        todoList && todoList.length != 0 ? todoList.filter(todo => !todo.isCompleted).map((todo, index) => {
           return (
             <Card
               key={index}
               userInput={todo?.task}
               handleDeleteTask={() => handleDelete(todo?.id)}
               handleCheckTask={() => handleCheck(todo?.id)}
-              isCompleted={todo?.completed}
+              isChecked={todo?.isCompleted}
             />
           );
         }) : <div className="notask"> - No Tasks - </div>
@@ -72,22 +70,22 @@ const AppTodoList = () => {
 
       {
         (todoList && todoList.length != 0) &&
-          <div className="done">
-            <div className="done-text">Done</div>
-            <div className="done-line"></div>
-          </div>
+        <div className="done">
+          <div className="done-text">Done</div>
+          <div className="done-line"></div>
+        </div>
       }
 
 
       {
-        todoList && todoList.filter(todo => todo.completed).map((todo, index) => {
+        todoList && todoList.filter(todo => todo.isCompleted).map((todo, index) => {
           return (
             <Card
               key={index}
               userInput={todo?.task}
               handleDeleteTask={() => handleDelete(todo?.id)}
               handleCheckTask={() => handleCheck(todo?.id)}
-              isCompleted={todo?.completed}
+              isChecked={todo?.isCompleted}
             />
           );
         })
