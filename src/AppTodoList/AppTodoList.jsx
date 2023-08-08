@@ -16,6 +16,7 @@ const AppTodoList = () => {
   };
   
   const handleKeyDown = (e) => {
+    if (input.length < 1) return;
     if (e.key === 'Enter') {
       addTask(input);
       setInput('');
