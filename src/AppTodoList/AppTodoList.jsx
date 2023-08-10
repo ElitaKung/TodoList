@@ -31,7 +31,7 @@ const AppTodoList = () => {
 
   const handleDelete = (idTaskClicked) => {
     const todoListCopy = [...todoList];
-    const newTodoList = todoListCopy.filter(todo => todo.id != idTaskClicked);
+    const newTodoList = todoListCopy.filter(todo => todo.id != idTaskClicked); //remove the one that is clicked
     setTodoList(newTodoList);
   };
 
