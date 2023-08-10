@@ -13,11 +13,10 @@ const Card = (props) => {
             checked={props.isChecked} 
             name="checkbox" 
             onChange={props.handleCheckTask}
-            // onChange={() => setIsChecked((prev) => !prev)} 
           />
           <span className={`${props.isChecked ? "crossed-font" : "normal-font"}`}>{props.userInput}</span>
         </div>
-        <div className='card-delete'>
+        <div>
           <img src={deleteIcon} alt="" onClick={props.handleDeleteTask} />
         </div>
       </div>
@@ -26,5 +25,3 @@ const Card = (props) => {
 };
 
 export default Card;
-
-//className={`${props.isCompleted ? "crossed-font" : "normal-font"}`

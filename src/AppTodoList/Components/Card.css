@@ -6,45 +6,51 @@
     
 }
 
-    .card-input {
-        display: flex;
-        padding-left: 15px;
-        width: 480px;
-        height: 40px;
-        background: #FFF8D6;
-        margin-top: 10px; 
-    }
+.card-input {
+    display: flex;
+    padding-left: 15px;
+    width: 480px;
+    height: 40px;
+    background: #FFF8D6;
+    margin-top: 10px; 
+}
 
-    .card-checkbox {
-        display:flex;
-        flex:1;
-        align-items: center
-    }
+.card-checkbox {
+    display:flex;
+    flex:1;
+    align-items: center
+}
 
-    span {
-        padding-left: 15px;
-    }
 
-    img {
-        width: 20px;
-        height: 20px;
-        padding-top: 10px;
-        padding-right: 15px;
-        outline: none;
-        border: 5px;
+span {
+    padding-left: 15px;
+}
 
-    }
+img {
+    width: 20px;
+    height: 20px;
+    margin-top: 5px;
+    margin-right: 15px;
+    outline: none;
+    border: 5px;
+    border-radius: 50%;
+    padding: 5px;
+}
+img:hover {
+    background-color: rgb(245, 222, 118);
+    cursor: pointer;
+}
 
-    .normal-font {
-        font-family: 'Dancing Script', cursive;
-        font-size: 16pt;
-    }
+.normal-font {
+    font-family: 'Dancing Script', cursive;
+    font-size: 16pt;
+}
 
-    .crossed-font {
-        font-family: 'Dancing Script', cursive;
-        font-size: 16pt;
-        text-decoration: line-through;
-    }
+.crossed-font {
+    font-family: 'Dancing Script', cursive;
+    font-size: 16pt;
+    text-decoration: line-through;
+}
 
 
 

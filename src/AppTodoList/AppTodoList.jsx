@@ -25,7 +25,7 @@ const AppTodoList = () => {
   
   const addTask = (userInput) => {
     const todoListCopy = [...todoList];
-    const newTodoList = [...todoListCopy, { id: todoList.length + 1, task: userInput, isCompleted: false }];
+    const newTodoList = [{ id: todoList.length + 1, task: userInput, isCompleted: false }, ...todoListCopy];
     setTodoList(newTodoList);
   };
 
