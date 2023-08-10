@@ -14,7 +14,7 @@ const AppTodoList = () => {
     addTask(input);
     setInput('');
   };
-  
+
   const handleKeyDown = (e) => {
     if (input.length < 1) return;
     if (e.key === 'Enter') {
@@ -22,7 +22,7 @@ const AppTodoList = () => {
       setInput('');
     }
   };
-  
+
   const addTask = (userInput) => {
     const todoListCopy = [...todoList];
     const newTodoList = [{ id: todoList.length + 1, task: userInput, isCompleted: false }, ...todoListCopy];
@@ -35,7 +35,7 @@ const AppTodoList = () => {
     setTodoList(newTodoList);
   };
 
-  
+
   const handleCheck = (id) => {
     todoList.map(todo => {
       if (todo.id === id) {
@@ -45,7 +45,7 @@ const AppTodoList = () => {
     setCount(count + 1);
     console.log(todoList);
   };
-  
+
   useEffect(() => { }, [count]);
 
 

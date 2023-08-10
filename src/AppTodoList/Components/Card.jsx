@@ -8,10 +8,10 @@ const Card = (props) => {
     <div className='card'>
       <div className="card-input">
         <div className='card-checkbox'>
-          <input 
-            type="checkbox" 
-            checked={props.isChecked} 
-            name="checkbox" 
+          <input
+            type="checkbox"
+            checked={props.isChecked}
+            name="checkbox"
             onChange={props.handleCheckTask}
           />
           <span className={`${props.isChecked ? "crossed-font" : "normal-font"}`}>{props.userInput}</span>
