@@ -6,7 +6,10 @@ const AppTodoList = () => {
 
   const [count, setCount] = useState(0);
   const [input, setInput] = useState("");
+  const [editInput, setEditInput] = useState("");
   const [todoList, setTodoList] = useState([]);
+  const [isEditing, setIsEditing] = useState(false);
+
 
   const handleSubmit = (e) => {
     if (input.length < 1) return;
@@ -14,7 +17,7 @@ const AppTodoList = () => {
     addTask(input);
     setInput('');
   };
-  
+
   const handleKeyDown = (e) => {
     if (input.length < 1) return;
     if (e.key === 'Enter') {
@@ -22,7 +25,7 @@ const AppTodoList = () => {
       setInput('');
     }
   };
-  
+
   const addTask = (userInput) => {
     const todoListCopy = [...todoList];
     const newTodoList = [...todoListCopy, { id: todoList.length + 1, task: userInput, isCompleted: false }];
@@ -35,7 +38,7 @@ const AppTodoList = () => {
     setTodoList(newTodoList);
   };
 
-  
+
   const handleCheck = (id) => {
     todoList.map(todo => {
       if (todo.id === id) {
@@ -43,11 +46,32 @@ const AppTodoList = () => {
       }
     });
     setCount(count + 1);
-    console.log(todoList);
+
   };
-  
+
   useEffect(() => { }, [count]);
 
+  const handleEditInput = (newValue) => {
+    setEditInput(newValue);
+  };
+
+  const handleEditInputOnKeyDown = (id, e) => {
+    if (e.key === 'Enter') {
+      todoList.map(todo => {
+        if (todo.id === id) {
+          todo.task = editInput;
+        }
+      });
+      setIsEditing(false)
+    }
+  };
+  const handleEdition = (id) => {
+    todoList.map(todo => {
+      if (todo.id === id) {
+        setIsEditing(true)
+      }
+    });
+  }
 
   return (
     <div className='container'>
@@ -56,7 +80,7 @@ const AppTodoList = () => {
         <input
           className='user-input-text'
           value={input}
-          onInput={(e) => setInput(e.target.value)}
+          onChange={(e) => setInput(e.target.value)}
           placeholder='What do you want to do ?'
           onKeyDown={handleKeyDown}
           autoFocus={true}
@@ -64,15 +88,21 @@ const AppTodoList = () => {
         </input>
         <button onClick={handleSubmit} className='user-input-btn'>ADD</button>
       </div>
+
       {
         todoList && todoList.length != 0 ? todoList.filter(todo => !todo.isCompleted).map((todo, index) => {
           return (
             <Card
               key={index}
               userInput={todo?.task}
-              handleDeleteTask={() => handleDelete(todo?.id)}
-              handleCheckTask={() => handleCheck(todo?.id)}
+              deleteTask={() => handleDelete(todo?.id)}
+              checkTask={() => handleCheck(todo?.id)}
               isChecked={todo?.isCompleted}
+              isEditing={isEditing}
+              editIconOnClick={() => handleEdition(todo?.id)}
+              editChange={handleEditInput}
+              editValue={editInput}
+              editInputOnKeyDown={(e) => handleEditInputOnKeyDown(todo?.id, e)}
             />
           );
         }) : <div className="notask"> - No Tasks - </div>
@@ -93,13 +123,19 @@ const AppTodoList = () => {
             <Card
               key={index}
               userInput={todo?.task}
-              handleDeleteTask={() => handleDelete(todo?.id)}
-              handleCheckTask={() => handleCheck(todo?.id)}
+              deleteTask={() => handleDelete(todo?.id)}
+              checkTask={() => handleCheck(todo?.id)}
               isChecked={todo?.isCompleted}
+
+              isEditing={isEditing}
+              editChange={handleEditInput}
+              editValue={editInput}
+              editInputOnKeyDown={(e) => handleEditInputOnKeyDown(todo?.id, e)}
             />
           );
         })
       }
+
     </div>
   );
 };
